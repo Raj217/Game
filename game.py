@@ -365,10 +365,10 @@ class Game:
         else:
             self.draw_background()
             self.draw_platform()
-            self.met_buttons()
             if not self.start_game:
                 self.draw_start_game()
             else:
+                self.met_buttons()
                 self.display_coins()
                 self.hero1_actions()
                 self.spawn_coins()
