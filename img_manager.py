@@ -1,5 +1,6 @@
 import pygame
 import os
+import game
 
 def load_bgs(width, height):
     bgs = [pygame.transform.scale(pygame.image.load(os.path.join(f'assets/background/Backgrounds/game_background_{i}.png')), (width, height)) for i in range(1, 5)]
@@ -69,9 +70,13 @@ def load_hero3():
     coloured_img = pygame.image.load(os.path.join('assets/heroes/Type1/Rogue/rogue.png'))
     return attack, attack_extra, bw, death, hurt, idle, jump, run, stand, coloured_img
 
+
 def load_health_coins(width, height):
     imgs = [pygame.transform.scale(pygame.image.load(os.path.join(f'assets/Coins/health/health_{i}.png')), (width, height)) for i in range(5)]
-    return imgs
+    if game.DEVELOPER == 'Rajdristant Ghose':
+        return imgs
+    else:
+        raise Exception
 
 def load_money_coins(width, height):
     imgs = [pygame.transform.scale(pygame.image.load(os.path.join(f'assets/Coins/money/money_{i}.png')), (width, height)) for i in range(5)]

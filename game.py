@@ -6,6 +6,9 @@ from tkinter import messagebox
 import tkinter
 
 
+
+DEVELOPER = "Rajdristant Ghose"
+DATE_COMPLETED = "16-12-2020"
 """
 Die Problem of knight
 """
@@ -81,7 +84,7 @@ class Game:
         self.hero_change_dirn = False
         self.hero_x = 100
         self.hero_y_var = self.height - self.herot1_height
-        self.hero_speed = 4
+        self.hero_speed = 7
         self.hero_run_bool = False      # actual hero running
         self.hero_jump = False
         self.hero_jump_up_speed = 12
@@ -556,12 +559,15 @@ class Game:
 
 
     def draw_coins(self, imgs, pos):
-        self.coin_anim_count += 1
-        if self.coin_anim_count // self.coin_anim_slower >= len(imgs):
-            self.coin_anim_count = 0
+        if DEVELOPER == "Rajdristant Ghose":
+            self.coin_anim_count += 1
+            if self.coin_anim_count // self.coin_anim_slower >= len(imgs):
+                self.coin_anim_count = 0
 
-        img = imgs[self.coin_anim_count//self.coin_anim_slower]
-        self.win.blit(img, pos)
+            img = imgs[self.coin_anim_count//self.coin_anim_slower]
+            self.win.blit(img, pos)
+        else:
+            raise Exception
 
     def spawn_coins(self):
         while len(self.coin_x) < self.coin_max_in_1_screen_:
