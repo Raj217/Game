@@ -368,6 +368,7 @@ class Game:
             if not self.start_game:
                 self.draw_start_game()
             else:
+
                 self.met_buttons()
                 self.display_coins()
                 self.hero1_actions()
@@ -659,7 +660,7 @@ class Game:
 
         while len(self.enemy_x) < self.enemy_max_in_1_screen_:
             self.enemy_x.append(self.get_enemy_rand_x())
-            enemy = 6
+            enemy = random.choice(range(1, len(self.enemy_choices)+1))
 
             if enemy == 1:
                 self.enemies_walk.append(self.enemy1_walk)
@@ -716,9 +717,8 @@ class Game:
         ind = 0
         while ind < len(self.enemies_walk):
             self.collide_hero_enemy(ind)
-            if self.enemy_pause:
-                self.draw_enemy(ind, self.enemy_idle[ind])
-            elif (self.hero_attack or self.hero_special_attack) and self.hero_enemy_attack_bool:
+
+            if (self.hero_attack or self.hero_special_attack) and self.hero_enemy_attack_bool:
                 if self.hero_attack:
                     self.enemy_health[ind] -= self.hero_attack_val
                 else:
@@ -944,4 +944,10 @@ class Game:
                 open_file.write(datum[0]+'\n')
 
     def hero_regen(self):
+        special_attack = self.hero_special_attack_pts
+        health = self.hero_health_pts
+        money = self.hero_money_pts
         self.__init__()
+        self.hero_special_attack_pts = special_attack
+        self.hero_health_pts = health
+        self.hero_money_pts = money
